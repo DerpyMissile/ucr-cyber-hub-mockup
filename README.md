@@ -1,8 +1,11 @@
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Falexcarpenter%2Fnextjs-mdx-blog-theme)
+# UC Riverside Cybersecurity Website
 
-# nextjs-mdx-blog-theme
+This website is created to serve as a central hub consisting of UCR's cybersecurity resources, ranging from professors and classes to publications and resources that are not often talked about; this is a hub meant to inform the public about the different resources and research that have come out of UCR.
 
-- **View**: [demo site](https://nextjs-mdx-blog-theme.vercel.app/)
+If you find that it is out-of-date, create a pull-request, file an issue, or email the current maintainer (derpymissile or xinan1441 on Discord)
+
+# This website uses the: nextjs-mdx-blog-theme
+
 - **Framework**: [Next.js](https://nextjs.org/)
 - **Deployment**: [Vercel](https://vercel.com)
 - **Content**: [MDX](https://github.com/mdx-js/mdx)
@@ -11,8 +14,8 @@
 ## Running Locally
 
 ```bash
-$ git clone https://github.com/alexcarpenter/nextjs-mdx-blog-theme
-$ cd nextjs-mdx-blog-theme
+$ git clone https://github.com/DerpyMissile/ucr-cyber-hub-mockup.git
+$ cd ucr-cyber-hub-mockup
 $ npm install
 $ npm run dev:watch
 ```

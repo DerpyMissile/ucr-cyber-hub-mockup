@@ -42,6 +42,7 @@ export const Page: React.FC<PageProps> = ({
       </Head>
       <header
         className={cx(
+          "font-oswald",
           "mb-8 pb-8 border-b",
           "border-gray-200",
           "dark:border-gray-700"
