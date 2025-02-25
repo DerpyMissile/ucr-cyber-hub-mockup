@@ -19,7 +19,7 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
           <>
             <p>
               View the source code on{" "}
-              <a href="https://github.com/alexcarpenter/nextjs-mdx-blog-theme">
+              <a href="https://github.com/DerpyMissile/ucr-cyber-hub-mockup.git">
                 Github
               </a>
               .
