@@ -18,15 +18,19 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
         description={
           <>
             <p>
-              View the source code on{" "}
-              <a href="https://github.com/DerpyMissile/ucr-cyber-hub-mockup.git">
-                Github
-              </a>
-              .
+              A hub of resources for any and all that are interested in any and
+              all aspects of cybersecurity at UCR!
             </p>
           </>
         }
       >
+        <p className="text-center">
+          Cybersecurity at UC Riverside focuses on a wide range of topics,
+          including System Security, Network Security, ML/AI Security, Software
+          Security, Hardware Security, Cryptography, and Privacy.
+        </p>
+        <hr className="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded-sm md:my-10 dark:bg-gray-700"></hr>
+        <h2 className="text-2xl font-bold mb-8 text-center">Faculty</h2>
         <PostList posts={posts} />
         <div className="mt-8">
           <Link
@@ -34,7 +38,7 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
             href="/posts"
             className="group inline-flex items-center gap-2 text-pink-600"
           >
-            View more posts{" "}
+            View all professors{" "}
             <ArrowRight
               className="group-hover:translate-x-0.5 transition-transform"
               width={".9em"}
@@ -50,7 +54,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const mdxFiles = getAllMdx().map((post) => post["frontMatter"]);
   return {
     props: {
-      posts: mdxFiles.slice(0, 5),
+      posts: mdxFiles.slice(0, 9),
     },
   };
 };

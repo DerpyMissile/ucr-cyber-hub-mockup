@@ -18,5 +18,8 @@ export type MDXFrontMatter = {
   title: string;
   description?: string;
   date: string;
+  picture?: string;
   tags?: Array<string>;
+  classes: Array<string>;
+  publication?: string;
 };
