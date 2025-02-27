@@ -57,8 +57,8 @@ const Home: NextPage<HomeProps> = ({ posts, resources }) => {
         <h2 className="text-2xl font-bold mb-8 text-center">Resources</h2>
         <p className="text-center">
           We are always looking for talented and motivated students,
-          researchers, and faculty to join our group. If you're interested in
-          working with us, please contact us.
+          researchers, and faculty to join our group. If you&apos;re interested
+          in working with us, please contact us.
         </p>
         <ResourcesList resources={resources} />
         <div className="mt-8">

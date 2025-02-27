@@ -17,6 +17,7 @@ export const ResourcesList: React.FC<ResourcesListProps> = ({ resources }) => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {resources.map((resources, index) => (
           <a
+            key={index}
             href={`/resources/${resources.slug}`}
             className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-sm md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
           >

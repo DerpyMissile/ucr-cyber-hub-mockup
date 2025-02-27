@@ -12,10 +12,10 @@ const About: NextPage = () => {
         <Prose>
           <p>
             This website is created to serve as a central hub consisting of
-            UCR's cybersecurity resources, ranging from professors and classes
-            to publications and resources that are not often talked about; this
-            is a hub meant to inform the public about the different resources
-            and research that have come out of UCR.
+            UCR&apos;s cybersecurity resources, ranging from professors and
+            classes to publications and resources that are not often talked
+            about; this is a hub meant to inform the public about the different
+            resources and research that have come out of UCR.
           </p>
           <p>
             We (Haocheng and Emmanual, the creators of the website) initially
@@ -27,12 +27,12 @@ const About: NextPage = () => {
           <p>
             We believe that this type of information should be shared and that
             the knowledge of both the results of the research curated by UCR as
-            well as its boundless helpful resources should't be buried under the
-            excess of fluff that the official UCR website has under
+            well as its boundless helpful resources should&apos;t be buried
+            under the excess of fluff that the official UCR website has under
             cybersecurity. Therefore, we created this website to serve as a
-            "hub" for students and researchers alike to find resources that
-            would serve to help them in whatever they want to find in terms of
-            cybersecurity here at UCR.
+            &quot;hub&quot; for students and researchers alike to find resources
+            that would serve to help them in whatever they want to find in terms
+            of cybersecurity here at UCR.
           </p>
           <p>
             If you find that it is out-of-date, create a pull-request, file an

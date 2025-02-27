@@ -91,7 +91,7 @@ export const PostList: React.FC<PostListProps> = ({ posts }) => {
   //   </ul>
   // );
   const [activeIndex, setActiveIndex] = useState(0);
-  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const displayIndex = hoveredIndex !== null ? hoveredIndex : activeIndex;
   const activeProfessor = posts[displayIndex];
