@@ -22,4 +22,5 @@ export type MDXFrontMatter = {
   tags?: Array<string>;
   classes: Array<string>;
   publication?: string;
+  website: string;
 };

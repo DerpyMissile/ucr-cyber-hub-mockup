@@ -7,89 +7,11 @@ import { Tag } from "./Tag";
 import Image from "next/image";
 import React, { useState } from "react";
 
-interface PostListProps {
+interface ResourcesListProps {
   posts: Array<MDXFrontMatter>;
 }
 
-export const PostList: React.FC<PostListProps> = ({ posts }) => {
-  // return (
-  //   <ul
-  //     className={cx(
-  //       "divide-y -my-8",
-  //       "divide-gray-200",
-  //       "dark:divide-gray-700"
-  //     )}
-  //   >
-  //     {posts.map((post, index) => {
-  //       return (
-  //         <li className="py-8" key={index}>
-  //           <article>
-  //             {/* <h2 className="font-bold text-xl">
-  //               <Link href={`/posts/${post.slug}`}>{post.title}</Link>
-  //             </h2>
-  //             {post.description ? (
-  //               <div className="mt-3">
-  //                 <Prose>
-  //                   <p>{post.description}</p>
-  //                 </Prose>
-  //               </div>
-  //             ) : null}
-  //             {post.tags ? (
-  //               <ul className="mt-4 flex flex-wrap space-x-2">
-  //                 {post.tags.map((tag, index) => {
-  //                   return (
-  //                     <li key={index}>
-  //                       <Tag href={`/posts/tagged/${slugify(tag)}`}>{tag}</Tag>
-  //                     </li>
-  //                   );
-  //                 })}
-  //               </ul>
-  //             ) : null} */}
-  //             <div className="border border-blue-600 rounded-lg p-4 flex flex-col">
-  //               <div className="flex items-start mb-4">
-  //                 <div className="w-16 h-16 rounded-full border-2 border-blue-600 flex-shrink-0 mr-4 flex items-center justify-center">
-  //                   {/* Placeholder for professor image/icon */}
-  //                   <div className="w-12 h-6 border-2 border-blue-500 rounded-md flex items-center justify-center">
-  //                     <div className="text-xs text-blue-600">👀</div>
-  //                   </div>
-  //                 </div>
-  //                 <div>
-  //                   <h3 className="font-bold text-lg border-b border-blue-600">
-  //                     <Link href={`/posts/${post.slug}`}>{post.title}</Link>
-  //                   </h3>
-  //                   <p className="text-gray-700">{post.description}</p>
-  //                 </div>
-  //               </div>
-  //               <div className="mt-auto pt-4 border-t border-blue-600 flex gap-2">
-  //                 {/* {professor.tags.map((tag) => (
-  //                   <span
-  //                     key={tag}
-  //                     className="px-3 py-1 bg-white border border-blue-600 rounded-full text-sm"
-  //                   >
-  //                     #{tag}
-  //                   </span>
-  //                 ))} */}
-  //                 {post.tags ? (
-  //                   <ul className="mt-4 flex flex-wrap space-x-2">
-  //                     {post.tags.map((tag, index) => {
-  //                       return (
-  //                         <li key={index}>
-  //                           <Tag href={`/posts/tagged/${slugify(tag)}`}>
-  //                             {tag}
-  //                           </Tag>
-  //                         </li>
-  //                       );
-  //                     })}
-  //                   </ul>
-  //                 ) : null}
-  //               </div>
-  //             </div>
-  //           </article>
-  //         </li>
-  //       );
-  //     })}
-  //   </ul>
-  // );
+export const ResourcesList: React.FC<ResourcesListProps> = ({ posts }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [hoveredIndex, setHoveredIndex] = useState(null);
 

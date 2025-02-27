@@ -9,6 +9,7 @@ const siteConfig: SiteConfig = {
   nav: [
     { label: "Posts", href: "/posts" },
     { label: "About", href: "/about" },
+    { label: "Resources", href: "/resources" },
   ],
   social: {
     github: "https://github.com/alexcarpenter",

@@ -12,8 +12,8 @@ const Posts: NextPage<PostsProps> = ({ posts }) => {
   return (
     <>
       <Page
-        title="Posts"
-        description="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+        title="Professors"
+        description="Here is the full comprehensive list of currently active professors in UCR."
       >
         <PostList posts={posts} />
       </Page>
