@@ -8,119 +8,31 @@ import Image from "next/image";
 import React, { useState } from "react";
 
 interface ResourcesListProps {
-  posts: Array<MDXFrontMatter>;
+  resources: Array<MDXFrontMatter>;
 }
 
-export const ResourcesList: React.FC<ResourcesListProps> = ({ posts }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [hoveredIndex, setHoveredIndex] = useState(null);
-
-  const displayIndex = hoveredIndex !== null ? hoveredIndex : activeIndex;
-  const activeProfessor = posts[displayIndex];
-
-  const handlePrevious = () => {
-    setActiveIndex((prev) => (prev > 0 ? prev - 1 : posts.length - 1));
-  };
-
-  const handleNext = () => {
-    setActiveIndex((prev) => (prev < posts.length - 1 ? prev + 1 : 0));
-  };
-
+export const ResourcesList: React.FC<ResourcesListProps> = ({ resources }) => {
   return (
     <div className="container mx-auto py-8 px-4">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {/* Professor List (Left Side) */}
-        <div
-          className={cx(
-            "divide-y -my-8",
-            "divide-gray-200",
-            "dark:divide-gray-700"
-          )}
-        >
-          <div className="flex justify-between items-center mb-4">
-            <h3 className="text-xl font-semibold">Our Professors</h3>
-            <div className="flex space-x-2">
-              <button
-                onClick={handlePrevious}
-                className="w-8 h-8 flex items-center justify-center rounded-full bg-blue-500 text-white"
-              >
-                &lt;
-              </button>
-              <button
-                onClick={handleNext}
-                className="w-8 h-8 flex items-center justify-center rounded-full bg-blue-500 text-white"
-              >
-                &gt;
-              </button>
-            </div>
-          </div>
-
-          <ul className="space-y-2">
-            {posts.map((posts, index) => (
-              <li
-                key={slugify(posts.title)}
-                className={`p-3 cursor-pointer border-l-4 transition-colors duration-200 ${
-                  index === activeIndex
-                    ? "border-blue-500 divide-gray-200"
-                    : "border-transparent hover:dark:divide-gray-100"
-                }`}
-                onClick={() => setActiveIndex(index)}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-              >
-                <div className="text-lg font-medium underline">
-                  <Link href={posts.website}>{posts.title}</Link>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Professor Detail (Right Side) */}
-        {activeProfessor && (
-          <div className="bg-gray-800 text-white rounded-lg p-6 border border-blue-500">
-            <div className="flex items-start mb-6">
-              <div className="w-24 h-24 rounded-full bg-blue-500 border-2 border-white flex items-center justify-center flex-shrink-0 mr-4">
-                <div className="w-16 h-12 rounded-full bg-gray-800 flex items-center justify-center">
-                  <div className="text-2xl">👀</div>
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-2xl font-bold border-b border-blue-500 pb-1 mb-2">
-                  {activeProfessor.title}
-                </h3>
-                <div className="space-y-2">
-                  <p className="text-gray-300">
-                    <span className="font-semibold">Classes:</span>{" "}
-                    {activeProfessor.classes.join(", ")}
-                  </p>
-                  <p className="text-gray-300">
-                    <span className="font-semibold">
-                      Most Recent Publication:
-                    </span>
-                    <br />
-                    {activeProfessor.publication}
-                  </p>
-                </div>
+        {resources.map((resources, index) => (
+          <a
+            href={`/resources/${resources.slug}`}
+            className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-sm md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+          >
+            <div className="space-y-2">
+              <div className="flex flex-col justify-between p-4 leading-normal">
+                <div className="text-2xl">{resources.emoji}</div>
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  {resources.title}
+                </h5>
+                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                  {resources.description}
+                </p>
               </div>
             </div>
-
-            <div className="border-t border-blue-500 pt-4 flex flex-wrap gap-2">
-              {activeProfessor.tags ? (
-                <ul className="mt-4 flex flex-wrap space-x-2">
-                  {activeProfessor.tags.map((tag, index) => {
-                    return (
-                      <li key={index}>
-                        <Tag href={`/posts/tagged/${slugify(tag)}`}>{tag}</Tag>
-                      </li>
-                    );
-                  })}
-                </ul>
-              ) : null}
-            </div>
-          </div>
-        )}
+          </a>
+        ))}
       </div>
     </div>
   );

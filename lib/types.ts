@@ -23,4 +23,5 @@ export type MDXFrontMatter = {
   classes: Array<string>;
   publication?: string;
   website: string;
+  emoji?: string;
 };

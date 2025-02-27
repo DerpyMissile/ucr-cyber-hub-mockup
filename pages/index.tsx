@@ -1,6 +1,6 @@
 import type { GetStaticProps, NextPage } from "next";
 import Link from "next/link";
-import { getAllMdx } from "@/lib/mdx";
+import { getAllMdx, getAllMdxR } from "@/lib/mdx";
 import { MDXFrontMatter } from "@/lib/types";
 import { Page } from "@/components/Page";
 import { PostList } from "@/components/PostList";
@@ -9,9 +9,10 @@ import { ArrowRight } from "react-feather";
 
 interface HomeProps {
   posts: Array<MDXFrontMatter>;
+  resources: Array<MDXFrontMatter>;
 }
 
-const Home: NextPage<HomeProps> = ({ posts }) => {
+const Home: NextPage<HomeProps> = ({ posts, resources }) => {
   return (
     <>
       <Page
@@ -59,7 +60,7 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
           researchers, and faculty to join our group. If you're interested in
           working with us, please contact us.
         </p>
-        <ResourcesList posts={posts} />
+        <ResourcesList resources={resources} />
         <div className="mt-8">
           <Link
             passHref
@@ -80,11 +81,11 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   const mdxFiles = getAllMdx().map((post) => post["frontMatter"]);
-  const mdxFiles2 = getAllMdx().map((resources) => resources["frontMatter"]);
+  const mdxFiles2 = getAllMdxR().map((resources) => resources["frontMatter"]);
   return {
     props: {
       posts: mdxFiles.slice(0, 9),
-      resources: mdxFiles2.slice(0, 9),
+      resources: mdxFiles2.slice(0, 4),
     },
   };
 };

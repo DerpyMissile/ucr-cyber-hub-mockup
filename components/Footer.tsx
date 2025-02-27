@@ -39,6 +39,9 @@ export const Footer: React.FC = () => {
       <div className="mt-8 flex justify-center">
         <ThemeSelect />
       </div>
+      {/* <p className="text-center italic">
+        Last updated 2/27/2025. If something looks wrong, please help us fix it!
+      </p> */}
     </footer>
   );
 };
