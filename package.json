@@ -6,7 +6,8 @@
     "dev:watch": "next-remote-watch ./posts",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next export"
   },
   "dependencies": {
     "@sindresorhus/slugify": "^2.1.0",
