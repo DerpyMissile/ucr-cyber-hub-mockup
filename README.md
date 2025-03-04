@@ -19,6 +19,13 @@ $ npm install
 $ npm run dev
 ```
 
+## Building Locally
+
+```bash
+$ npm run build
+$ npm run export
+```
+
 ## Styling
 
 To organize Tailwind CSS light and dark styles on elements, we make use of `cx` utility as an array. The first string contains the base styles, the second string is for light mode styles, and lastly the third string is for dark mode styling.
