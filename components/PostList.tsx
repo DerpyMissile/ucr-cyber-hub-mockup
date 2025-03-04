@@ -5,103 +5,38 @@ import { Prose } from "@/components/Prose";
 import { cx, slugify } from "@/lib/utils";
 import { Tag } from "./Tag";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 interface PostListProps {
   posts: Array<MDXFrontMatter>;
 }
 
 export const PostList: React.FC<PostListProps> = ({ posts }) => {
-  // return (
-  //   <ul
-  //     className={cx(
-  //       "divide-y -my-8",
-  //       "divide-gray-200",
-  //       "dark:divide-gray-700"
-  //     )}
-  //   >
-  //     {posts.map((post, index) => {
-  //       return (
-  //         <li className="py-8" key={index}>
-  //           <article>
-  //             {/* <h2 className="font-bold text-xl">
-  //               <Link href={`/posts/${post.slug}`}>{post.title}</Link>
-  //             </h2>
-  //             {post.description ? (
-  //               <div className="mt-3">
-  //                 <Prose>
-  //                   <p>{post.description}</p>
-  //                 </Prose>
-  //               </div>
-  //             ) : null}
-  //             {post.tags ? (
-  //               <ul className="mt-4 flex flex-wrap space-x-2">
-  //                 {post.tags.map((tag, index) => {
-  //                   return (
-  //                     <li key={index}>
-  //                       <Tag href={`/posts/tagged/${slugify(tag)}`}>{tag}</Tag>
-  //                     </li>
-  //                   );
-  //                 })}
-  //               </ul>
-  //             ) : null} */}
-  //             <div className="border border-blue-600 rounded-lg p-4 flex flex-col">
-  //               <div className="flex items-start mb-4">
-  //                 <div className="w-16 h-16 rounded-full border-2 border-blue-600 flex-shrink-0 mr-4 flex items-center justify-center">
-  //                   {/* Placeholder for professor image/icon */}
-  //                   <div className="w-12 h-6 border-2 border-blue-500 rounded-md flex items-center justify-center">
-  //                     <div className="text-xs text-blue-600">👀</div>
-  //                   </div>
-  //                 </div>
-  //                 <div>
-  //                   <h3 className="font-bold text-lg border-b border-blue-600">
-  //                     <Link href={`/posts/${post.slug}`}>{post.title}</Link>
-  //                   </h3>
-  //                   <p className="text-gray-700">{post.description}</p>
-  //                 </div>
-  //               </div>
-  //               <div className="mt-auto pt-4 border-t border-blue-600 flex gap-2">
-  //                 {/* {professor.tags.map((tag) => (
-  //                   <span
-  //                     key={tag}
-  //                     className="px-3 py-1 bg-white border border-blue-600 rounded-full text-sm"
-  //                   >
-  //                     #{tag}
-  //                   </span>
-  //                 ))} */}
-  //                 {post.tags ? (
-  //                   <ul className="mt-4 flex flex-wrap space-x-2">
-  //                     {post.tags.map((tag, index) => {
-  //                       return (
-  //                         <li key={index}>
-  //                           <Tag href={`/posts/tagged/${slugify(tag)}`}>
-  //                             {tag}
-  //                           </Tag>
-  //                         </li>
-  //                       );
-  //                     })}
-  //                   </ul>
-  //                 ) : null}
-  //               </div>
-  //             </div>
-  //           </article>
-  //         </li>
-  //       );
-  //     })}
-  //   </ul>
-  // );
+  const [displayedPosts, setDisplayedPosts] = useState<MDXFrontMatter[]>([]);
+  const [startIndex, setStartIndex] = useState(0);
   const [activeIndex, setActiveIndex] = useState(0);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
+  // Update displayed posts when start index changes
+  useEffect(() => {
+    const endIndex = Math.min(startIndex + 9, posts.length);
+    setDisplayedPosts(posts.slice(startIndex, endIndex));
+    setActiveIndex(0);
+  }, [startIndex, posts]);
+
   const displayIndex = hoveredIndex !== null ? hoveredIndex : activeIndex;
-  const activeProfessor = posts[displayIndex];
+  const activeProfessor = displayedPosts[displayIndex];
 
   const handlePrevious = () => {
-    setActiveIndex((prev) => (prev > 0 ? prev - 1 : posts.length - 1));
+    // Move to previous batch of 9 professors
+    setStartIndex((prev) => Math.max(0, prev - 9));
   };
 
   const handleNext = () => {
-    setActiveIndex((prev) => (prev < posts.length - 1 ? prev + 1 : 0));
+    // Move to next batch of 9 professors
+    if (startIndex + 9 < posts.length) {
+      setStartIndex((prev) => prev + 9);
+    }
   };
 
   return (
@@ -120,13 +55,23 @@ export const PostList: React.FC<PostListProps> = ({ posts }) => {
             <div className="flex space-x-2">
               <button
                 onClick={handlePrevious}
-                className="w-8 h-8 flex items-center justify-center rounded-full bg-blue-500 text-white"
+                disabled={startIndex === 0}
+                className={`w-8 h-8 flex items-center justify-center rounded-full ${
+                  startIndex === 0
+                    ? "bg-gray-300 text-gray-500"
+                    : "bg-blue-500 text-white"
+                }`}
               >
                 &lt;
               </button>
               <button
                 onClick={handleNext}
-                className="w-8 h-8 flex items-center justify-center rounded-full bg-blue-500 text-white"
+                disabled={startIndex + 9 >= posts.length}
+                className={`w-8 h-8 flex items-center justify-center rounded-full ${
+                  startIndex + 9 >= posts.length
+                    ? "bg-gray-300 text-gray-500"
+                    : "bg-blue-500 text-white"
+                }`}
               >
                 &gt;
               </button>
@@ -134,9 +79,9 @@ export const PostList: React.FC<PostListProps> = ({ posts }) => {
           </div>
 
           <ul className="space-y-2">
-            {posts.map((posts, index) => (
+            {displayedPosts.map((post, index) => (
               <li
-                key={slugify(posts.title)}
+                key={slugify(post.title)}
                 className={`p-3 cursor-pointer border-l-4 transition-colors duration-200 ${
                   index === activeIndex
                     ? "border-blue-500 divide-gray-200"
@@ -147,7 +92,8 @@ export const PostList: React.FC<PostListProps> = ({ posts }) => {
                 onMouseLeave={() => setHoveredIndex(null)}
               >
                 <div className="text-lg font-medium underline">
-                  <Link href={posts.website}>{posts.title}</Link>
+                  {/* <Link href={post.website}>{post.title}</Link> */}
+                  <Link href={`/posts/${post.slug}`}>{post.title}</Link>
                 </div>
               </li>
             ))}
