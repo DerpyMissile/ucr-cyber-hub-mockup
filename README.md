@@ -7,7 +7,6 @@ If you find that it is out-of-date, create a pull-request, file an issue, or ema
 # This website uses the: nextjs-mdx-blog-theme
 
 - **Framework**: [Next.js](https://nextjs.org/)
-- **Deployment**: [Vercel](https://vercel.com)
 - **Content**: [MDX](https://github.com/mdx-js/mdx)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 
@@ -17,7 +16,7 @@ If you find that it is out-of-date, create a pull-request, file an issue, or ema
 $ git clone https://github.com/DerpyMissile/ucr-cyber-hub-mockup.git
 $ cd ucr-cyber-hub-mockup
 $ npm install
-$ npm run dev:watch
+$ npm run dev
 ```
 
 ## Styling
