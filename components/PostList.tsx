@@ -120,11 +120,11 @@ export const PostList: React.FC<PostListProps> = ({ posts }) => {
                     {activeProfessor.classes.join(", ")}
                   </p>
                   <p className="text-gray-300">
-                    <span className="font-semibold">
+                    {/* <span className="font-semibold">
                       Most Recent Publication:
-                    </span>
-                    <br />
-                    {activeProfessor.publication}
+                    </span> */}
+                    {/* <br />
+                    {activeProfessor.publication} */}
                   </p>
                 </div>
               </div>
